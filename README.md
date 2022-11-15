@@ -1,3 +1,2 @@
-# super-mario-64-javascript
-play sm64 using javascript 
-i didnt make this
+# SM64-JS
+Super Mario 64 ported to JavaScript and WebAssembly via Emscripten.
