@@ -58,6 +58,44 @@ ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONME
 if (Module['ENVIRONMENT']) {
   throw new Error('Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -s ENVIRONMENT=web or -s ENVIRONMENT=node)');
 }
+// Function to toggle fullscreen
+function toggleFullscreen() {
+  if (!document.fullscreenElement &&    // Check if not already in fullscreen
+      !document.webkitFullscreenElement && 
+      !document.mozFullScreenElement && 
+      !document.msFullscreenElement) { // Add vendor prefixes for compatibility
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+}
+
+// Hook into window load event to add fullscreen toggle option
+if (ENVIRONMENT_IS_WEB) {
+  window.onload = function() {
+    // Example: Add an event listener to toggle fullscreen on a button click
+    var fullscreenButton = document.createElement('button');
+    fullscreenButton.textContent = "Toggle Fullscreen";
+    fullscreenButton.onclick = toggleFullscreen;
+    document.body.appendChild(fullscreenButton);
+  };
+}
 
 
 
