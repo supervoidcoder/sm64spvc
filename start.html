@@ -1,71 +1,60 @@
-<title>SM64 Player</title>
-<link rel="stylesheet" href="style.css">
-<center>
-  <h1>Click to start this nostalgia</h1>
-  <h3>SM64-JS | Made by Chase Wicklund on replit! (@jscraft) revived by @ripjaw1219, fullscreen by @supervoidcoder</h3>
-</center>
-<script>
-  document.addEventListener('click', function() {
-    document.write('<html lang="en-us"><head>');
-    document.write('    <meta charset="utf-8">');
-    document.write('    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
-    document.write('    <title>Super Mario 64</title>');
-    document.write('    <style>');
-    document.write('      body, html {');
-    document.write('        margin: 0;');
-    document.write('        padding: 0;');
-    document.write('        width: 100vw;');
-    document.write('        height: 100vh;');
-    document.write('        font-family: Arial, Helvetica, sans-serif;');
-    document.write('        color: white;');
-    document.write('        image-rendering: pixelated;');
-    document.write('        overflow: hidden;');
-    document.write('      }');
-    document.write('      #container {');
-    document.write('        width: 100vw;');
-    document.write('        height: 100vh;');
-    document.write('        display: flex;');
-    document.write('        align-items: center;');
-    document.write('        justify-content: center;');
-    document.write('      }');
-    document.write('      canvas {');
-    document.write('        width: 100vw;');
-    document.write('        height: 100vh;');
-    document.write('      }');
-    document.write('    </style>');
-    document.write('</head>');
-    document.write('<body>');
-    document.write('  <div id="container">');
-    document.write('    <canvas class="emscripten" id="canvas" width="1920" height="1080"></canvas>');
-    document.write('  </div>');
-    document.write('  <script type="text/javascript">');
-    document.write('    var Module = {');
-    document.write('      preRun: [],');
-    document.write('      postRun: [],');
-    document.write('      print: (function() {');
-    document.write('        return function(text) {');
-    document.write('          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");');
-    document.write('          console.log(text);');
-    document.write('        };');
-    document.write('      })(),');
-    document.write('      printErr: function(text) {');
-    document.write('        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");');
-    document.write('        console.error(text);');
-    document.write('      },');
-    document.write('      canvas: (function() {');
-    document.write('        var canvas = document.getElementById("canvas");');
-    document.write('        canvas.width = window.innerWidth;');
-    document.write('        canvas.height = window.innerHeight;');
-    document.write('        canvas.addEventListener("webglcontextlost", function(e) {');
-    document.write('          alert("WebGL context lost. You will need to reload the page.");');
-    document.write('          e.preventDefault();');
-    document.write('        }, false);');
-    document.write('        return canvas;');
-    document.write('      })(),');
-    document.write('      setStatus: function(text) {}');
-    document.write('    };');
-    document.write('  </script>');
-    document.write('  <script async type="text/javascript" src="./game/sm64.js"></script>');
-    document.write('</body></html>');
-  });
-</script>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SM64 Player</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            image-rendering: pixelated;
+            overflow: hidden;
+        }
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Click to start this nostalgia</h1>
+        <h3>SM64-JS | Made by Chase Wicklund on replit! (@jscraft) revived by @ripjaw1219, fullscreen by @supervoidcoder</h3>
+    </center>
+    <script>
+        document.addEventListener('click', function() {
+            // no more click to start hhahahahhahha
+            document.querySelector('center').style.display = 'none';
+            const container = document.createElement('div');
+            container.id = 'container';
+            document.body.appendChild(container);
+            const canvas = document.createElement('canvas');            // canvas, no not the school side duh
+            canvas.id = 'canvas';
+            container.appendChild(canvas);
+            canvas.width = window.innerWidth;             // i love my fullscreeny
+            canvas.height = window.innerHeight; // :O more fullscreeny
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = './game/sm64.js';
+            document.body.appendChild(script);
+            canvas.addEventListener('webglcontextlost', function(e) {
+                alert('WebGL context lost. You will need to reload the page.');
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
