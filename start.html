@@ -6,70 +6,66 @@
 </center>
 <script>
   document.addEventListener('click', () => {
-    document.write(`
-      <html lang="en-us">
-        <head>
-          <meta charset="utf-8">
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-          <title>Super Mario 64</title>
-          <style>
-            body, html {
-              margin: 0;
-              padding: 0;
-              width: 100vw;
-              height: 100vh;
-              font-family: Arial, Helvetica, sans-serif;
-              color: white;
-              image-rendering: pixelated;
-              overflow: hidden;
-            }
-            #container {
-              width: 100vw;
-              height: 100vh;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-            canvas {
-              width: 100vw;
-              height: 100vh;
-            }
-          </style>
-        </head>
-        <body>
-          <div id="container">
-            <canvas class="emscripten" id="canvas" width="1920" height="1080"></canvas>
-          </div>
-          <script type="text/javascript">
-            var Module = {
-              preRun: [],
-              postRun: [],
-              print: (function() {
-                return function(text) {
-                  if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-                  console.log(text);
-                };
-              })(),
-              printErr: function(text) {
-                if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-                console.error(text);
-              },
-              canvas: (function() {
-                var canvas = document.getElementById('canvas');
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                canvas.addEventListener("webglcontextlost", function(e) {
-                  alert('WebGL context lost. You will need to reload the page.');
-                  e.preventDefault();
-                }, false);
-                return canvas;
-              })(),
-              setStatus: function(text) {}
-            };
-          </script>
-          <script async type="text/javascript" src="./game/sm64.js"></script>
-        </body>
-      </html>
-    `);
+    document.write('<html lang="en-us"><head>');
+    document.write('    <meta charset="utf-8">');
+    document.write('    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
+    document.write('    <title>Super Mario 64</title>');
+    document.write('    <style>');
+    document.write('      body, html {');
+    document.write('        margin: 0;');
+    document.write('        padding: 0;');
+    document.write('        width: 100vw;');
+    document.write('        height: 100vh;');
+    document.write('        font-family: Arial, Helvetica, sans-serif;');
+    document.write('        color: white;');
+    document.write('        image-rendering: pixelated;');
+    document.write('        overflow: hidden;');
+    document.write('      }');
+    document.write('      #container {');
+    document.write('        width: 100vw;');
+    document.write('        height: 100vh;');
+    document.write('        display: flex;');
+    document.write('        align-items: center;');
+    document.write('        justify-content: center;');
+    document.write('      }');
+    document.write('      canvas {');
+    document.write('        width: 100vw;');
+    document.write('        height: 100vh;');
+    document.write('      }');
+    document.write('    </style>');
+    document.write('</head>');
+    document.write('<body>');
+    document.write('  <div id="container">');
+    document.write('    <canvas class="emscripten" id="canvas" width="1920" height="1080"></canvas>');
+    document.write('  </div>');
+    document.write('  <script type="text/javascript">');
+    document.write('    var Module = {');
+    document.write('      preRun: [],');
+    document.write('      postRun: [],');
+    document.write('      print: (function() {');
+    document.write('        return function(text) {');
+    document.write('          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");');
+    document.write('          console.log(text);');
+    document.write('        };');
+    document.write('      })(),');
+    document.write('      printErr: function(text) {');
+    document.write('        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");');
+    document.write('        console.error(text);');
+    document.write('      },');
+    document.write('      canvas: (function() {');
+    document.write('        var canvas = document.getElementById("canvas");');
+    document.write('        canvas.width = window.innerWidth;');
+    document.write('        canvas.height = window.innerHeight;');
+    document.write('        canvas.addEventListener("webglcontextlost", function(e) {');
+    document.write('          alert("WebGL context lost. You will need to reload the page.");');
+    document.write('          e.preventDefault();');
+    document.write('        }, false);');
+    document.write('        return canvas;');
+    document.write('      })(),');
+    document.write('      setStatus: function(text) {}');
+    document.write('    };');
+    document.write('  </script>');
+    document.write('  <script async type="text/javascript" src="./game/sm64.js"></script>');
+    document.write('</body></html>');
   });
 </script>
