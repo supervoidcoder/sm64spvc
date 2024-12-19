@@ -36,19 +36,28 @@
     </center>
     <script>
         document.addEventListener('click', function() {
-            // no more click to start hhahahahhahha
             document.querySelector('center').style.display = 'none';
+//ugh this is getting annoying it's all broken IT'S ALL BROKEN IT'S ALL
             const container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
-            const canvas = document.createElement('canvas');            // canvas, no not the school side duh
+            
+            const canvas = document.createElement('canvas');
             canvas.id = 'canvas';
             container.appendChild(canvas);
-            canvas.width = window.innerWidth;             // i love my fullscreeny
-            canvas.height = window.innerHeight; // :O more fullscreeny
+            
+            // fullscreeny
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
             const script = document.createElement('script');
             script.async = true;
             script.src = './game/sm64.js';
+            script.onload = () => {
+                const Module = {
+                    canvas: canvas,
+                };
+            };
             document.body.appendChild(script);
             canvas.addEventListener('webglcontextlost', function(e) {
                 alert('WebGL context lost. You will need to reload the page.');
